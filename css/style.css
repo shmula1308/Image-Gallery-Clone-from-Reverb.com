@@ -22,22 +22,85 @@ img {
 }
 
 .main-image {
+  position: relative;
   width: 100%;
   height: 750px;
   border-bottom: 1px solid lightgray;
+}
+
+.main-image:hover {
+  cursor: zoom-in;
+}
+
+.main-image:hover .arrows {
+  opacity: 1;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.main-image:hover .right-arrow {
+  right: 0.3em;
+}
+
+.main-image:hover .left-arrow {
+  left: 0.3em;
+}
+
+.arrows {
+  position: absolute;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.right-arrow {
+  right: -1em;
+}
+
+.left-arrow {
+  left: -1em;
+}
+
+.arrows:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .thumbnails {
   width: 100%;
   height: 4.8em;
   display: flex;
-  padding: 0.1em 0.2em 0 0.2em;
-  overflow: scroll;
+  padding: 0.3em 0 0.3em 0;
+  overflow-x: scroll;
 }
 
 .thumbnails img {
   width: 4.5em;
   height: 4.5em;
-  margin: 0;
   padding: 0.3em;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+.thumbnails img:hover {
+  opacity: 0.8;
+}
+
+.thumbnails .active {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in 1 forwards;
 }

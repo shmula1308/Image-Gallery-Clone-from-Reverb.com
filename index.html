@@ -4,15 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
     <title>Reverb.com Image Gallery Clone</title>
   </head>
   <body>
     <div class="gallery-container">
       <div class="main-image">
+        <i
+          class="fas fa-chevron-circle-right right-arrow arrows"
+          id="right"
+        ></i>
+        <i class="fas fa-chevron-circle-left left-arrow arrows" id="left"></i>
         <img src="images/img1.jpg" />
       </div>
       <div class="thumbnails">
-        <img src="images/img1.jpg" />
+        <img class="active" src="images/img1.jpg" />
         <img src="images/img2.jpg" />
         <img src="images/img3.jpg" />
         <img src="images/img4.jpg" />
@@ -28,5 +39,6 @@
         <img src="images/img14.jpg" />
       </div>
     </div>
+    <script src="js/script.js"></script>
   </body>
 </html>
