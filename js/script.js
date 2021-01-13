@@ -2,12 +2,14 @@ const thumbnails = document.querySelectorAll('.thumbnails img')
 const mainImage = document.querySelector('.main-image img');
 const mainImgContainer = document.querySelector('.main-image')
 
+let index = 0;
 
 thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('click', changeImage)
 })
 
 function changeImage(ev) {
+    index = Array.from(thumbnails).indexOf(ev.target);
   // Remove active class from previous thumbnail
   const activeThumb = document.querySelector('.active');
   activeThumb.classList.remove('active');
@@ -30,5 +32,21 @@ mainImgContainer.addEventListener('click', clickedArrow)
 function clickedArrow(ev) {
     const arrow = ev.target.closest("i").id;
     if(!arrow) return;
-    console.log(arrow);
+    if(arrow === 'right') {
+        index++;
+        if(index > thumbnails.length - 1) index = 0;
+        let src = thumbnails[index].src;
+        mainImage.src = src;
+        const activeThumb = document.querySelector('.active');
+        activeThumb.classList.remove('active');
+        thumbnails[index].classList.add('active');
+    } else {
+        index--;
+        if(index < 0) index = thumbnails.length - 1;
+        let src = thumbnails[index].src;
+        mainImage.src = src;
+        const activeThumb = document.querySelector('.active');
+        activeThumb.classList.remove('active');
+        thumbnails[index].classList.add('active');
+    }
 }
