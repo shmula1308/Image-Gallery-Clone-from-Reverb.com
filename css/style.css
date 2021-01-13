@@ -17,7 +17,7 @@ img {
 
 .gallery-container {
   max-width: 750px;
-  margin: 5em auto;
+  margin: 5em 0 0 15em;
   border: 1px solid lightgray;
 }
 
@@ -103,4 +103,103 @@ img {
 .fade-in {
   opacity: 0;
   animation: fadeIn 0.3s ease-in 1 forwards;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  transition: all 0.3s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+.modal-main-image {
+  position: relative;
+  width: 750px;
+  height: 750px;
+  margin: auto;
+}
+
+.thumbnails-container {
+  width: 1050px;
+  margin: auto;
+}
+
+.modal-thumbnails {
+  max-width: 100%;
+  margin: 2em auto;
+  height: 4.8em;
+  display: flex;
+  padding: 0.3em 0 0.3em 0;
+  overflow-x: scroll;
+}
+
+.modal-inner-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding-top: 5em;
+}
+
+.modal-arrows {
+  position: absolute;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.modal-arrows:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-right-arrow {
+  right: 1em;
+}
+
+.modal-left-arrow {
+  left: 1em;
+}
+
+.closeBtn {
+  position: absolute;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  top: 1em;
+  right: 1em;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-thumbnails img {
+  opacity: 0.6;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.modal-thumbnails img:hover {
+  opacity: 0.8;
+}
+
+.modal-thumbnails .active {
+  opacity: 1;
+}
+
+@keyframes zoom {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
