@@ -33,31 +33,47 @@ function changeImage(ev) {
 mainImgContainer.addEventListener('click', changeWithArrow)
 
 function changeWithArrow(ev) {
+    //If elemnt we click on has no id we return to avoid error
     if(!ev.target.id) return;
+    //Get only closest icon tags with an id
     const arrow = ev.target.closest("i").id;
     if(arrow === 'right') {
         index++;
+        //if index is bigger than the index of the last item in the array reste to zero
         if(index > thumbnails.length - 1) index = 0;
+        //Update modalIndex, so that the same image is displayed when zoomed in
         modalIndex = index;
+        //Get the source of the next image in the array
         let src = thumbnails[index].src;
+        //Update main image with new source
         mainImage.src = src;
+        //Get active thumbnail, remove active class
         const activeThumb = document.querySelector('.active');
         activeThumb.classList.remove('active');
+        //Add active class to current thumbnail
         thumbnails[index].classList.add('active');
     } else {
         index--;
+        //Start from the end if index is smaller than 0
         if(index < 0) index = thumbnails.length - 1;
+        //Update modalIndex with current position
         modalIndex = index;
+        //Get source of curren image
         let src = thumbnails[index].src;
+        //Update source of main image
         mainImage.src = src;
+        //Get active class thumbnail
         const activeThumb = document.querySelector('.active');
+        //Remove active class
         activeThumb.classList.remove('active');
+        //Add active class to currently cliked thumbnail
         thumbnails[index].classList.add('active');
     }
 }
 
 
 /* MODAL OVERLAY */
+//Same code with same apporach as above is repeated for modal overlay
 
 const modalOverlay = document.querySelector('.modal-overlay');
 const closeBtn = document.querySelector('.closeBtn');
@@ -70,6 +86,7 @@ const modalMainImg = document.querySelector('.modal-main-image img');
 
 mainImage.addEventListener('click', () => {
     modalOverlay.style.display = 'block';
+    //When we click zoom on main image, we update modalImage overlay with current image
     const src = modalThumbnails[modalIndex].src;
     modalMainImg.src = src;
     
@@ -77,6 +94,7 @@ mainImage.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
     modalOverlay.style.display = 'none';
+    // When we leave modal overlay we update the main image in the main page gallery with the last image selected inside modal overlay
     const src = thumbnails[index].src;
     mainImage.src = src;
     
